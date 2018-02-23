@@ -208,3 +208,131 @@ function foo() {
 }
 
 foo();
+
+
+// access var's value in scope where it's not available
+
+function foo() {
+	a = 1;	// a is not formally declared
+}
+
+foo();
+a;		// 1 -> oops!! automatically a global variable :(
+
+// declare vars to belong to individual blocks using "let" keyword
+
+function foo() {
+	var a = 1;
+
+	if (a >= 1) {
+		let b = 2;
+
+		while (b < 5) {
+			let c = b * 2;
+			b++;
+
+			console.log( a + c );
+		}
+	}
+}
+
+foo();
+// 5 7 9
+
+
+
+// CONDITIONALS
+
+// if else
+if (a == 2) {
+	// do something
+}
+else if (a == 10) {
+	// do another thing
+}
+else if (a == 42) {
+	// do yet another thing
+}
+else {
+	// fallback to here
+}
+
+// switch case
+switch (a) {
+	case 2:
+		// do something
+		break;
+	case 10:
+		// do another thing
+		break;
+	case 42:
+		// do yet another thing
+		break;
+	default:
+		// fallback to here
+}
+
+//  using break to only have one case to run
+switch (a) {
+	case 2:
+	case 10:
+		// some cool stuff
+		break;
+	case 42:
+		// other stuff
+		break;
+	default:
+		// fallback
+}
+
+// TERNARY OPERATOR - one liners for if/else
+var a = 42;
+
+var b = (a > 41) ? "hello" : "world";
+
+// similar to:
+
+// if (a > 41) {
+//    b = "hello";
+// }
+// else {
+//    b = "world";
+// }
+
+
+// STRICT MODE
+// // Individual function
+function foo() {
+	"use strict";
+
+	// this code is strict mode
+
+	function bar() {
+		// this code is strict mode
+	}
+}
+
+// this code is not strict mode
+
+
+// // whole file
+"use strict";
+
+function foo() {
+	// this code is strict mode
+
+	function bar() {
+		// this code is strict mode
+	}
+}
+
+// this code is strict mode
+
+
+// // disables implicit auto-global variable declaration from omitting the var
+function foo() {
+	"use strict";	// turn on strict mode
+	a = 1;			// `var` missing, ReferenceError
+}
+
+foo();
